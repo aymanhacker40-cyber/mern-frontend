@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Customer Support</title>
+    <link rel="stylesheet" href="./contact.css">
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>Contact Us</h1>
+            <p>If you have questions or need support, our team is ready to help you 24/7</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="contact-cards">
+            <div class="contact-card">
+                <div class="contact-card-icon">📞</div>
+                <h3>Call Us</h3>
+                <p>Talk to our support team</p>
+                <div class="detail">+201287754201</div>
+                <p style="margin-top: 10px; font-size: 0.9em;">24/7 Support Available</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-card-icon">✉️</div>
+                <h3>Email Us</h3>
+                <p>Send us your inquiry</p>
+                <div class="detail">rahaltour53@gmail.com</div>
+                <p style="margin-top: 10px; font-size: 0.9em;">Response within 24 hours</p>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-card-icon">📱</div>
+                <h3>WhatsApp</h3>
+                <p>Message us on WhatsApp</p>
+                <div class="detail">+201287754201</div>
+                <p style="margin-top: 10px; font-size: 0.9em;">Quick responses</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Send Us a Message</h2>
+            <p class="subtitle">Fill out the form below and we'll get back to you as soon as possible</p>
+
+            <form id="contactForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>First Name *</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Last Name *</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address *</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Subject *</label>
+                        <select id="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="booking">Booking Inquiry</option>
+                            <option value="modification">Booking Modification</option>
+                            <option value="cancellation">Cancellation Request</option>
+                            <option value="payment">Payment Issue</option>
+                            <option value="complaint">Complaint</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Message *</label>
+                        <textarea id="message" required placeholder="Please provide details about your inquiry..."></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Message</button>
+            </form>
+        </div>
+
+        <div class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I modify my booking?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Go to the Contact Us page, enter your details, choose the subject as Booking Modification, then send the email and the support team will contact you.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is your cancellation policy?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Cancellation policies vary depending on the service provider and booking type. Please check your booking confirmation for specific cancellation terms or contact our support team for assistance.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How do I get a refund?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Refunds are processed according to the cancellation policy of your booking. After approval, refunds typically take 7-14 business days . Contact us for specific refund inquiries.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is customer support available 24/7?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes! Our customer support team is available 24 hours a day, 7 days a week through phone, email, live chat, and WhatsApp to assist you with any travel needs.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How can I track my booking status?</span>
+                    <span class="faq-arrow">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Log into your account and visit the "My Bookings" section to view all your current and past bookings. You'll receive email updates about any changes to your booking status.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="success-modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-icon">✓</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for contacting us. We'll get back to you within 24 hours.</p>
+            <button class="close-modal-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>

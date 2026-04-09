@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahal - Enjoy the World</title>
+    <link rel="stylesheet" href="signup-style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>ENJOY THE<br />WORLD</h1>
+          <p>
+            Discover breathtaking destinations, hidden gems, and unforgettable
+            adventures around the world. Join our community of travelers and
+            start planning your next journey with ease – from exotic beaches to
+            historic cities, the world is waiting for you!
+          </p>
+          <a href="/frontend/destination/tourism-destinations.html" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+      <div class="signup-section">
+        <div class="logo">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16Z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 10L12 15L21 10"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Rahal</span>
+        </div>
+        <h2>Create Account</h2>
+        <form id="signupForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name*</label>
+              <input type="text" id="firstName" required />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name*</label>
+              <input type="text" id="lastName" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="age">Age*</label>
+              <input type="number" id="age" min="18" max="120" required />
+              <div class="input-hint">Must be 18 or older</div>
+            </div>
+            <div class="form-group">
+              <label for="gender">Gender*</label>
+              <select id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+                <option value="prefer-not-to-say">Prefer not to say</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nationalId">National ID*</label>
+            <input type="text" id="nationalId" maxlength="14" required />
+            <div id="nationalIdHint" class="input-hint">Must be exactly 14 digits</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number*</label>
+            <input type="tel" id="phone" maxlength="11" required />
+            <div id="phoneHint" class="input-hint">Must be exactly 11 digits</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address*</label>
+            <input type="email" id="email" required />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password*</label>
+            <input type="password" id="password" required />
+            <div class="password-requirements">
+              <div id="req-length" class="requirement">✗ At least 8 characters</div>
+              <div id="req-upper" class="requirement">✗ At least 1 uppercase letter</div>
+              <div id="req-lower" class="requirement">✗ At least 1 lowercase letter</div>
+              <div id="req-number" class="requirement">✗ At least 1 number</div>
+              <div id="req-special" class="requirement">✗ At least 1 special character</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="repeatPassword">Repeat Password*</label>
+            <input type="password" id="repeatPassword" required />
+            <div id="passwordMatch" class="password-match"></div>
+          </div>
+
+          <div id="formMessage" class="form-message"></div>
+
+
+          
+
+          <button type="submit" class="continue-btn">Continue</button>
+          
+        </form>
+      </div>
+    </div>
+    <script src="signup-script.js"></script>
+  </body>
+</html>

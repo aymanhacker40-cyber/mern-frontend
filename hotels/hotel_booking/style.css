@@ -1,0 +1,297 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #0f172a;
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.hero {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    padding: 60px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    font-size: 3em;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2em;
+}
+
+.form-wrapper {
+    padding: 50px;
+}
+
+/* ===== خطوات النموذج ===== */
+.step-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+}
+
+.step::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    right: 50%;
+    width: 100%;
+    height: 2px;
+    background: rgba(148, 163, 184, 0.3);
+    z-index: -1;
+}
+
+.step:first-child::before { display: none; }
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(148, 163, 184, 0.2);
+    color: #94a3b8;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+    transition: all 0.3s;
+}
+
+.step.active .step-circle {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+}
+
+.step-label {
+    color: #94a3b8;
+    font-size: 0.9em;
+}
+
+.step.active .step-label {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+/* ===== أقسام النموذج ===== */
+.form-section {
+    display: none;
+    animation: fadeIn 0.5s;
+}
+
+.form-section.active { display: block; }
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group { margin-bottom: 25px; }
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #cbd5e1;
+    font-weight: 500;
+    font-size: 0.95em;
+}
+
+input, select {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 2px solid rgba(148, 163, 184, 0.2);
+    border-radius: 12px;
+    color: #e2e8f0;
+    font-size: 1em;
+    transition: all 0.3s;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background: rgba(15, 23, 42, 0.8);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+/* ===== شبكة النزلاء ===== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.guest-card {
+    background: rgba(15, 23, 42, 0.4);
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+    position: relative;
+}
+
+.guest-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+    border-radius: 0 16px 16px 0;
+}
+
+.guest-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.guest-header h3 {
+    color: #3b82f6;
+    font-size: 1.1em;
+}
+
+/* ===== الأزرار ===== */
+.btn {
+    padding: 12px 28px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+.btn-secondary {
+    background: rgba(148, 163, 184, 0.2);
+    color: #cbd5e1;
+}
+
+.btn-secondary:hover {
+    background: rgba(148, 163, 184, 0.3);
+}
+
+/* زر حذف النزيل */
+.btn-danger {
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    color: white;
+    padding: 14px 30px;
+    font-size: 1.05em;
+    font-weight: 700;
+    border-radius: 16px;
+    min-width: 120px;
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+    transition: all 0.25s ease;
+}
+
+.btn-danger:hover {
+    transform: scale(1.06);
+    background: linear-gradient(135deg, #b91c1c, #dc2626);
+    box-shadow: 0 12px 35px rgba(239, 68, 68, 0.7);
+}
+
+.btn-danger:active { transform: scale(0.95); }
+
+.btn-group { display: flex; gap: 15px; margin-top: 30px; }
+.btn-group .btn { flex: 1; }
+.add-guest-wrapper { text-align: center; margin-top: 20px; }
+
+/* ===== رسائل الخطأ والنجاح ===== */
+.message {
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.95em;
+    animation: fadeIn 0.4s ease;
+}
+
+.message.error {
+    background: rgba(239, 68, 68, 0.15);
+    color: #fecaca;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    box-shadow: 0 0 15px rgba(239, 68, 68, 0.15);
+}
+
+.message.success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #bbf7d0;
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.15);
+}
+
+/* ===== استجابة الموبايل ===== */
+@media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .form-wrapper { padding: 30px 20px; }
+    .hero { padding: 40px 20px; }
+    .hero h1 { font-size: 2em; }
+    .step-indicator { padding: 0; }
+    .step-label { font-size: 0.75em; }
+}

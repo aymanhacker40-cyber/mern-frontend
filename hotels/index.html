@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rahal Hotels</title>
+
+ <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body class="bg-gray-100">
+
+<header class="bg-[#0a4a6e] text-white ">
+  <div class="container px-4 py-4 flex justify-between items-center">
+    <h1 class="text-2xl font-bold" id="company-name">رحال</h1>
+    <nav class="flex gap-6">
+      <a href="../home/index.html" id="nav-home">الصفحة الرئيسية</a>
+      <a class="font-bold border-b-2 border-white" href="../hotels/index.html" id="nav-hotels">الفنادق</a>
+      <a href="../cars/arabic cars/arabic.html" id="nav-cars">تأجير السيارات</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <button id="lang-toggle" class="bg-white text-[#0a4a6e] px-4 py-2 rounded-lg font-bold">EN</button>
+        <div id="Login">
+            <a href="../registration/login/travel_login_html.html"><i class="fa-regular fa-circle-user" id="user-icon"></i></a>
+            <div class="dropdown-box">
+              <p id="displayGmail">Loading...</p>
+              <button id="logoutBtn">Logout</button>
+            </div>
+          </div>
+      
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="bg-gradient-to-br from-[#0a4a6e] to-[#0d5f8a] text-white py-16">
+  <div class="container mx-auto px-4 text-center">
+    <h2 class="text-4xl font-bold mb-2" id="hero-title">احجز فندقك بأفضل الأسعار</h2>
+    <p class="text-xl text-gray-200 mb-8" id="hero-subtitle">استمتع بتجربة إقامة مميزة</p>
+    <button class="bg-white text-[#0a4a6e] px-8 py-4 text-lg rounded-lg font-bold transition-transform duration-300 hover:scale-105" onclick="window.location.href='hotel_booking/index.html'" id="hero-btn">
+        إحجز الان
+    </button>
+  </div>
+</section>
+
+<div class="flex p-6 gap-6">
+
+  <!-- Filters -->
+  <aside class="w-1/4 bg-white p-6 rounded-2xl shadow-lg h-fit">
+    <h2 class="text-2xl font-bold mb-4" id="filters-title">الفلاتر</h2>
+
+    <label class="font-bold block mb-2 mt-4" id="search-label">بحث</label>
+    <input type="text" id="searchInput"  class="w-full p-2 border rounded-lg">
+
+    <label class="font-bold block mb-2" id="continent-label">القارة</label>
+    <select id="continentSelect" class="filter-select">
+      <option value="">الكل</option>
+      <option value="آسيا">آسيا</option>
+      <option value="أوروبا">أوروبا</option>
+      <option value="أفريقيا">أفريقيا</option>
+      <option value="أمريكا الشمالية">أمريكا الشمالية</option>
+      <option value="أمريكا الجنوبية">أمريكا الجنوبية</option>
+      <option value="أوقيانوسيا">أوقيانوسيا</option>
+    </select>
+
+    <label class="font-bold block mb-2 mt-4" id="country-label">الدولة</label>
+    <select id="countrySelect" class="filter-select">
+      <option value="">الكل</option>
+    </select>
+
+    <label class="font-bold block mb-2 mt-4" id="city-label">المدينة</label>
+    <select id="citySelect" class="filter-select">
+      <option value="">الكل</option>
+    </select>
+
+    <label class="font-bold block mb-2 mt-4" id="price-label">السعر</label>
+    <div class="flex gap-2">
+      <input id="minPrice" type="number" placeholder="حد أدنى" class="price-input">
+      <input id="maxPrice" type="number" placeholder="حد أقصى" class="price-input">
+    </div>
+
+    <label class="font-bold block mb-2 mt-4" id="rating-label">التقييم</label>
+    <select id="ratingSelect" class="filter-select">
+      <option value="">كل التقييمات</option>
+      <option value="5">⭐⭐⭐⭐⭐</option>
+      <option value="4">⭐⭐⭐⭐+</option>
+      <option value="3">⭐⭐⭐+</option>
+    </select>
+
+    <label class="font-bold block mb-2 mt-4" id="views-label">الإطلالة</label>
+    <div class="space-y-2 text-sm">
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="sea"> بحر</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="city"> مدينة</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="pool"> مسبح</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="garden"> حديقة</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="river"> نهر</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="mountain"> جبل</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="lake"> بحيرة</label>
+      <label class="flex items-center gap-2"><input type="checkbox" class="viewCheck" value="harbor"> ميناء</label>
+    </div>
+
+    <div class="mt-6 text-center">
+      <button id="resetFilters" class="bg-red-500 text-white px-6 py-2 rounded-lg font-bold hover:bg-red-600 transition-colors" id="reset-btn">إعادة التعيين</button>
+    </div>
+  </aside>
+
+  <!-- Hotels -->
+  <main class="w-3/4">
+    <h2 id="resultsCount" class="text-xl font-bold mb-4"></h2>
+    <div id="hotelsGrid" class="grid grid-cols-2 gap-6"></div>
+  </main>
+
+</div>
+
+<!-- Footer -->
+<footer class="bg-[#0a4a6e] text-white mt-10">
+  <div class="container mx-auto px-6 py-10 grid grid-cols-4 gap-8">
+
+    <div>
+      <h4 id="footer-company-title" class="font-bold mb-3">الشركة</h4>
+      <ul>
+        <li><a id="footer-about" href="../about/about.html" class="hover:underline">من نحن</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 id="footer-help-title" class="font-bold mb-3">المساعدة</h4>
+      <ul>
+        <li><a id="footer-faq" href="../contact us/tourism-contact-page.html" class="hover:underline">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 id="footer-services-title" class="font-bold mb-3">الخدمات</h4>
+      <ul>
+        <li><a id="footer-hotels" href="../hotels/index.html" class="hover:underline">الفنادق</a></li>
+        <li><a id="footer-cars" href="../cars/english cars/english.html" class="hover:underline">السيارات</a></li>
+        <li><a id="footer-flight" href="../home/index.html" class="hover:underline">الطيران</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 id="footer-social-title" class="font-bold mb-3">تابعنا</h4>
+      <div class="flex gap-4 text-xl">
+        <a href="https://www.facebook.com/profile.php?id=61583307142506" class="hover:text-gray-300"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/toursrahal/" class="hover:text-gray-300"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@portsaid42?lang=en" class="hover:text-gray-300"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.linkedin.com/in/rahal-tour-2224673b1/?isSelfProfile=true" class="hover:text-gray-300"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer-copy" class="text-center py-4 border-t border-white/20">
+    © 2026 رحال
+  </div>
+</footer>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>

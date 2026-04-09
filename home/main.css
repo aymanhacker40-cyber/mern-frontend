@@ -1,0 +1,996 @@
+body {
+  direction: rtl;
+  height: 2000px;
+  overflow-x: hidden !important;
+  background-image: url(./img-20260223T084748Z-1-001/img/9442.jpg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top;
+}
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Open Sans";
+}
+
+
+div.line{
+display: flex;
+justify-content: center;
+& hr{
+  width: 50%;
+  border: none;
+  height: 2px;
+  background-color:rgb(67, 118, 185);
+}
+}
+
+
+.adminLink{
+    padding: 8px 16px;
+    color: white;
+    text-decoration: none;
+    border: 1.5px solid #06396c;
+    border-radius: 6px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    &:hover{
+      background-color: #24588c;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1.5px solid white;
+    }
+}
+
+.notAdmin{
+  display: none;
+}
+/* * ----------- NAV ----------- * */
+
+div#Login {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+}
+
+#user-icon {
+  font-size: 40px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.dropdown-box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 10px 40px;
+  white-space: wrap;
+  z-index: 100;
+  border: 2px solid rgb(105, 158, 223);
+  border-radius: 0px 15px 15px 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgb(105, 158, 223);
+}
+
+.dropdown-box button{
+  width: 100%;
+}
+
+div#Login:hover .dropdown-box {
+  display: block;
+}
+
+div#Login i {
+  font-size: 30px;
+  cursor: pointer;
+}
+nav {
+  /* TODO */
+  /* position: sticky; 
+  top: 0;  */
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+  padding: 40px;
+  /* padding-left: 190px; */
+  height: 100px;
+}
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: auto;
+  list-style-type: none;
+  color: white;
+  & div a {
+    color: white;
+    text-decoration: none;
+  }
+}
+nav ul li {
+  font-size: 30px;
+}
+
+nav ul li.logo,
+div.footer_logo p.logo {
+  font-family: "Playwrite NO", cursive;
+  font-weight: bolder;
+}
+div.footer_logo p.logo {
+  font-size: 30px;
+}
+
+div#type {
+  display: flex;
+  color: white;
+  justify-content: flex-start;
+  padding-top: 50px;
+  /*  */
+  font-weight: 900;
+}
+
+div#type div {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 20px;
+  font-size: auto;
+  font-weight: bolder;
+  & a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+div#type div p {
+  padding-right: 10px;
+}
+
+.paste-button {
+  position: relative;
+  display: block;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.menu {
+  background-color: transparent;
+  width: 100%;
+  color: #212121;
+  padding: 10px 15px;
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  border: 2px solid transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  font-size: 13px;
+  position: absolute;
+  z-index: 1;
+  min-width: 200px;
+  border: 2px solid rgb(105, 158, 223);
+  border-radius: 0px 15px 15px 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 8px 10px;
+  text-decoration: none;
+  display: block;
+  transition: 0.1s;
+}
+
+.dropdown-content a:hover {
+  background-color: rgb(105, 158, 223);
+  color: #212121;
+}
+
+.dropdown-content a:focus {
+  background-color: transparent;
+  color: rgb(105, 158, 223);
+}
+
+.dropdown-content #top:hover {
+  border-radius: 0px 13px 0px 0px;
+}
+
+.dropdown-content #bottom:hover {
+  border-radius: 0px 0px 13px 13px;
+}
+
+.paste-button:hover button {
+  border-radius: 15px 15px 0px 0px;
+}
+
+.paste-button:hover .dropdown-content {
+  display: block;
+}
+
+/* ! -----------  NAV ----------- * */
+
+/* * ----------- Main ----------- * */
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 650px;
+  width: 100%;
+  color: #000;
+}
+
+main div.Title {
+  color: white;
+  word-spacing: 30px;
+  padding-right: 20px;
+  & h1 {
+    font-family: "Playwrite NO", cursive;
+  }
+  & h1 span {
+    color: rgb(105, 158, 223);
+    margin-left: 10px;
+  }
+}
+
+/* TODO Auto */
+main div#search {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 60px 20px 20px 20px;
+  background-color: transparent;
+  width: 80%;
+  /* box-shadow: 1px 1px 1px 1px gray; */
+  height: auto;
+  border-radius: 20px;
+  /* margin-bottom: 10px; */
+}
+.btn-soon {
+  position: relative;
+  padding: 12px 25px;
+  background-color: #ccc;
+  border: none;
+  border-radius: 8px;
+  cursor: not-allowed;
+  color: #555;
+  font-size: 16px;
+}
+
+.soon-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  /* background: red; */
+  background-color: rgb(105, 158, 223);
+  color: white;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 12px;
+}
+
+button,
+div.row_one div a {
+  border: 1px solid gray;
+  color: black;
+  border-radius: 20px;
+  width: calc(100% / 3);
+  /* background-color: aliceblue; */
+  padding: 10px;
+  margin-left: 3%;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+
+
+div.row_one {
+  display: flex;
+}
+div.row_one > div {
+  display: flex;
+  margin-right: 1%;
+  width: 60%;
+  justify-content: space-evenly;
+}
+
+div.row_one div.part_2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 40%;
+  cursor: pointer;
+}
+
+/* TODO Hover */
+
+div.row_one div p {
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+input[type="text"],
+input[type="date"] {
+  padding: 20px;
+  border: 1px solid gray;
+  background: transparent;
+  border-radius: 5px;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  cursor: pointer;
+}
+input[type="text"]::placeholder {
+  padding-right: 50px;
+}
+input.icon,
+input.icon_one,
+input.icon_two,
+input.icon_Age {
+  background-image: url("./img-20260223T084748Z-1-001/img/plane-departure-solid-full.svg");
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: 140px center;
+  cursor: pointer;
+}
+input.icon_one {
+  background-image: url("./img-20260223T084748Z-1-001/img/plane-arrival-solid-full.svg");
+}
+input.icon_two {
+  background-image: url("./img/calendar-regular-full.svg");
+}
+input.icon_Age {
+  background-image: url("./img-20260223T084748Z-1-001/img/calendar-regular-full.svg");
+}
+
+div.row_Two div {
+  width: 100%;
+}
+div.row_Two div * {
+  width: calc(100% / 6);
+  margin-right: 1%;
+}
+div.row_Two div:not(div.searchButton) {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}
+
+div.searchButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(67, 118, 185);
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+}
+div.searchButton p {
+  font-weight: bolder;
+  font-size: large;
+  margin-right: 12px;
+}
+div.searchButton i {
+  font-size: 20px;
+}
+
+form#searchForm label {
+  margin-left: 40px;
+}
+/* ! ----------- Main ----------- * */
+
+/* * ----------- Meza ----------- * */
+
+section.meza {
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  & div img {
+    width: 60px;
+    padding-bottom: 20px;
+  }
+}
+section.meza div:last-child img {
+  width: 50px;
+  /* color: red; */
+  /* background-color: #0c9ab0; */
+}
+
+section.meza div {
+  width: calc(100% / 5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid black;
+  border-spacing: -20px;
+  & a {
+    text-decoration: none;
+    color: #000;
+  }
+}
+section.meza div i {
+  font-size: 25px;
+  padding-bottom: 10px;
+}
+
+/* ! ----------- Meza ----------- * */
+
+/* * ----------- Slider ----------- * */
+.main_slider {
+  padding: 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+div.slider img {
+  width: calc((95% / 3));
+  height: 300px;
+  display: none;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider img.active {
+  display: block;
+  border: 2px solid rgb(60, 130, 215);
+}
+div.btn {
+  font-size: large;
+  border-radius: 50%;
+  padding: 20px;
+  background-color: rgb(67, 118, 185);
+  & i {
+    color: white;
+  }
+}
+
+/* ! ----------- Slider ----------- * */
+
+/* * ----------- Download ----------- * */
+
+section.download {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+section.download h3 {
+  margin-bottom: 10px;
+}
+section.download div.des {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 4% 0px 0px;
+  width: 70%;
+  height: 100%;
+  /* background-color: red; */
+}
+section.download div.phone {
+  width: 20%;
+}
+section.download div.Qr img {
+  width: 100px;
+  /* margin-right: 10px; */
+}
+
+section.download div.phone img {
+  width: 300px;
+}
+
+div.Appstore {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div.Appstore a {
+  margin-bottom: 10px;
+}
+.playstore-button {
+  display: inline-flex;
+  align-items: center;
+  width: 130px;
+  justify-content: center;
+  border: 2px solid #000;
+  border-radius: 9999px;
+  background-color: rgba(0, 0, 0, 1);
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 1);
+  outline: 0;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.playstore-button:hover {
+  background-color: transparent;
+  color: rgba(0, 0, 0, 1);
+}
+
+.icon {
+  height: 1.4rem;
+  width: 1.4rem;
+}
+
+.texts {
+  margin-right: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+
+.text-1 {
+  margin-bottom: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.text-2 {
+  font-weight: 600;
+}
+
+/* ! ----------- Download ----------- * */
+
+/* * ----------- Footer ----------- * */
+
+footer {
+  padding: 40px 0px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+footer div.footer_logo {
+  margin-right: 5%;
+}
+footer div.Countries {
+  margin-left: 5%;
+}
+footer div h3 {
+  margin-bottom: 30px;
+}
+footer div a {
+  text-decoration: none;
+  color: #0c9ab0;
+}
+footer > * {
+  width: calc(100% / 6);
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+div.SocialMedia div,
+div.Countries div {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+div.SocialMedia div img,
+div.Countries div img {
+  margin-left: 10px;
+  width: 25px;
+}
+div.SocialMedia,
+div.Corporate,
+div.Countries,
+div.Support,
+div.Legal {
+  display: flex;
+  flex-direction: column;
+}
+
+.Countries div a{
+  cursor: default;
+}
+
+/* ! ----------- Footer ----------- * */
+
+/* * =============================== */
+/* * -------- Search Form ---------- */
+/* * =============================== */
+
+div.row_Two {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-top: 15px;
+  /* override القديم اللي كان بيأثر */
+  width: 100% !important;
+}
+
+/* نلغي overrides القديمة على row_Two */
+div.row_Two div,
+div.row_Two div * {
+  width: auto;
+  margin-right: 0;
+}
+div.row_Two div:not(div.searchButton) {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: unset;
+}
+
+.search-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 130px;
+}
+
+.search-field label {
+  font-size: 12px;
+  font-weight: 700;
+  color: rgb(67, 118, 185);
+  margin-bottom: 6px;
+  padding-right: 4px;
+}
+
+.search-field input[type="text"],
+.search-field input[type="date"] {
+  padding: 10px 14px;
+  border: 1.5px solid #d0d7e3;
+  background: white;
+  border-radius: 10px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  color: #333;
+  transition: border-color 0.2s;
+}
+
+.search-field input:focus {
+  outline: none;
+  border-color: rgb(67, 118, 185);
+}
+
+.search-field input[type="date"]::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* تاريخ العودة - مخفي بالديفولت */
+#return-date-wrap {
+  display: none;
+}
+#return-date-wrap.visible {
+  display: flex;
+}
+
+/* حقل الأمتعة */
+.luggage-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  border: 1.5px solid #d0d7e3;
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-width: 130px;
+  flex: 1;
+}
+
+.luggage-field label {
+  font-size: 14px;
+  cursor: pointer;
+  color: #333;
+  font-weight: 500;
+}
+
+.luggage-field input[type="checkbox"] {
+  width: 17px;
+  height: 17px;
+  cursor: pointer;
+  accent-color: rgb(67, 118, 185);
+  margin: 0;
+}
+
+/* زرار البحث - يستخدم searchButton الموجود أصلاً في main.css */
+div.searchButton {
+  /* flex: 0 0 auto; */
+  /* margin-top: 50px; */
+  border-radius: 12px;
+  padding: 1.5px 28px;
+  gap: 8px;
+  min-height: 44px;
+}
+
+/* ! =============================== */
+/* ! -------- Search Form ---------- */
+/* ! =============================== */
+
+/* * =============================== */
+/* * -------- Results Section ------ */
+/* * =============================== */
+
+#results-section {
+  display: none;
+  padding: 30px 60px;
+  direction: rtl;
+}
+
+#results-section.visible {
+  display: block;
+}
+
+#results-section h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a2a4a;
+  border-right: 4px solid rgb(67, 118, 185);
+  padding-right: 12px;
+}
+
+#flights-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* كارد الرحلة */
+.flight-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
+  border: 1.5px solid #e8eef6;
+  position: relative;
+  overflow: hidden;
+}
+
+.flight-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(180deg, rgb(67, 118, 185), rgb(105, 158, 223));
+  border-radius: 0 18px 18px 0;
+}
+
+.flight-card:hover {
+  box-shadow: 0 8px 32px rgba(67, 118, 185, 0.18);
+  transform: translateY(-2px);
+}
+
+/* اسم الشركة */
+.airline-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 90px;
+}
+
+.airline-logo {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin-bottom: 6px;
+  background: #f0f5ff;
+}
+
+.airline-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+}
+
+/* مسار الرحلة */
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+  justify-content: center;
+}
+
+.route-point {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.route-time {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a2a4a;
+  line-height: 1;
+}
+
+.route-city {
+  font-size: 12px;
+  color: #888;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.route-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  flex: 1;
+}
+
+.duration-text {
+  font-size: 11px;
+  color: #aaa;
+  font-weight: 600;
+}
+
+.line-with-plane {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 3px;
+}
+
+.route-dash {
+  flex: 1;
+  height: 1.5px;
+  background: #d0d7e3;
+}
+
+.plane-icon {
+  color: rgb(67, 118, 185);
+  font-size: 16px;
+}
+
+.stop-badge {
+  font-size: 10px;
+  color: rgb(67, 118, 185);
+  font-weight: 700;
+  background: #f0f5ff;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+/* تفاصيل + درجة */
+.flight-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 90px;
+}
+
+.flight-class {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  background: #f5f5f5;
+  padding: 3px 10px;
+  border-radius: 8px;
+}
+
+.luggage-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #4caf8a;
+  font-weight: 700;
+  background: #f0fff8;
+  padding: 3px 8px;
+  border-radius: 8px;
+}
+
+.luggage-badge.no-luggage {
+  color: #e57373;
+  background: #fff5f5;
+}
+
+/* السعر + احجز */
+.price-book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  min-width: 130px;
+}
+
+.price-wrap {
+  text-align: center;
+}
+
+.price-tag {
+  font-size: 28px;
+  font-weight: 900;
+  color: #1a2a4a;
+  line-height: 1;
+}
+
+.price-currency {
+  font-size: 13px;
+  font-weight: 600;
+  color: #888;
+}
+
+.book-now-btn {
+  background: linear-gradient(135deg, rgb(67, 118, 185), rgb(105, 158, 223));
+  color: white !important;
+  text-decoration: none;
+  border: none !important;
+  border-radius: 12px !important;
+  padding: 10px 22px !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  width: auto !important;
+  margin: 0 !important;
+  transition:
+    opacity 0.2s,
+    transform 0.1s;
+}
+
+.book-now-btn:hover {
+  opacity: 0.88;
+  transform: scale(1.03);
+}
+
+/* لا توجد نتائج */
+#no-results {
+  display: none;
+  text-align: center;
+  padding: 50px 20px;
+  color: #aaa;
+  font-size: 16px;
+}
+
+#no-results.visible {
+  display: block;
+}
+
+#no-results i {
+  font-size: 48px;
+  color: #d0d7e3;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* ! =============================== */
+/* ! -------- Results Section ------ */
+/* ! =============================== */

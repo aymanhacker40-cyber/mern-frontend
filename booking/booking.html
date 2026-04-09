@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حجوزاتي</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --blue-deep: #0a1f44;
+      --blue-mid: #1a3a6e;
+      --blue-accent: #1e6fff;
+      --blue-light: #4d9fff;
+      --blue-pale: #e8f1ff;
+      --white: #ffffff;
+      --gray-light: #f4f7fc;
+      --gray-text: #6b7a99;
+      --success: #00c48c;
+      --warning: #ffaa00;
+      --danger: #ff4d4d;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--gray-light);
+      color: var(--blue-deep);
+      min-height: 100vh;
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--blue-deep);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, .3);
+    }
+
+    .logo {
+      color: var(--white);
+      font-size: 1.4rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--blue-light);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, .7);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 600;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--white);
+    }
+
+    .nav-user {
+      display: flex;
+      color: white;
+      align-items: center;
+      gap: .75rem;
+      & a{
+        text-decoration: none;
+        color: white;
+        font-size: 30px;
+      }
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--blue-accent);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: .9rem;
+    }
+
+    /* ── HERO BANNER ── */
+    .hero {
+      background: linear-gradient(135deg, var(--blue-deep) 0%, var(--blue-mid) 60%, var(--blue-accent) 100%);
+      padding: 3rem 2rem 5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: var(--gray-light);
+      clip-path: ellipse(55% 100% at 50% 100%);
+    }
+
+    .hero h1 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: .5rem;
+    }
+
+    .hero p {
+      color: rgba(255, 255, 255, .7);
+      font-size: 1rem;
+    }
+
+    /* ── FILTER TABS ── */
+    .filters {
+      display: flex;
+      gap: .75rem;
+      justify-content: center;
+      padding: 2rem 1rem 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: .55rem 1.4rem;
+      border-radius: 50px;
+      border: 2px solid var(--blue-accent);
+      background: transparent;
+      color: var(--blue-accent);
+      font-family: 'Cairo', sans-serif;
+      font-size: .9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .2s;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--blue-accent);
+      color: #fff;
+    }
+
+    .filter-btn .count {
+      background: rgba(255, 255, 255, .25);
+      border-radius: 50px;
+      padding: 0 .45rem;
+      font-size: .75rem;
+    }
+
+    .filter-btn:not(.active) .count {
+      background: var(--blue-pale);
+      color: var(--blue-accent);
+    }
+
+    /* ── STATS ROW ── */
+    .stats {
+      display: flex;
+      gap: 1rem;
+      padding: 0 2rem 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .stat-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 1.2rem 2rem;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(30, 111, 255, .08);
+      min-width: 140px;
+      flex: 1;
+      max-width: 200px;
+    }
+
+    .stat-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--blue-accent);
+    }
+
+    .stat-lbl {
+      font-size: .8rem;
+      color: var(--gray-text);
+      margin-top: .2rem;
+    }
+
+    /* ── GRID ── */
+    .bookings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+      padding: 0 2rem 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(10, 31, 68, .08);
+      transition: transform .25s, box-shadow .25s;
+      animation: fadeUp .4s ease both;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(30, 111, 255, .15);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card:nth-child(2) {
+      animation-delay: .07s;
+    }
+
+    .card:nth-child(3) {
+      animation-delay: .14s;
+    }
+
+    .card:nth-child(4) {
+      animation-delay: .21s;
+    }
+
+    .card:nth-child(5) {
+      animation-delay: .28s;
+    }
+
+    .card:nth-child(6) {
+      animation-delay: .35s;
+    }
+
+    /* card header stripe */
+    .card-header {
+      padding: 1.1rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      border-bottom: 1px solid var(--blue-pale);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .icon-flight {
+      background: #e8f1ff;
+    }
+
+    .icon-hotel {
+      background: #e8fff4;
+    }
+
+    .icon-car {
+      background: #fff8e8;
+    }
+
+    .card-type {
+      font-size: .72rem;
+      font-weight: 700;
+      color: var(--gray-text);
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--blue-deep);
+    }
+
+    /* status badge */
+    .badge {
+      margin-right: auto;
+      padding: .3rem .85rem;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 700;
+    }
+
+    .badge-confirmed {
+      background: #d4f5ea;
+      color: #00915e;
+    }
+
+    .badge-pending {
+      background: #fff3d4;
+      color: #c17a00;
+    }
+
+    .badge-cancelled {
+      background: #ffd4d4;
+      color: #b50000;
+    }
+
+    .badge-completed {
+      background: var(--blue-pale);
+      color: var(--blue-accent);
+    }
+
+    /* card body */
+    .card-body {
+      padding: 1.2rem 1.4rem;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-block {
+      flex: 1;
+    }
+
+    .info-label {
+      font-size: .72rem;
+      color: var(--gray-text);
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+
+    .info-value {
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--blue-deep);
+    }
+
+    .info-value.big {
+      font-size: 1.1rem;
+    }
+
+    /* flight route line */
+    .route-line {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+
+    .route-city {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--blue-deep);
+    }
+
+    .route-arrow {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: .3rem;
+    }
+
+    .route-dash {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--blue-light), var(--blue-pale));
+    }
+
+    .plane-icon {
+      color: var(--blue-accent);
+      font-size: 1rem;
+      transform: scaleX(-1);
+    }
+
+    /* divider */
+    .divider {
+      border: none;
+      border-top: 1.5px dashed var(--blue-pale);
+      margin: 1rem 0;
+    }
+
+    /* price & actions */
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem;
+    }
+
+    .price {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--blue-accent);
+    }
+
+    .price small {
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--gray-text);
+      display: block;
+    }
+
+    .btn {
+      padding: .55rem 1.2rem;
+      border-radius: 10px;
+      font-family: 'Cairo', sans-serif;
+      font-size: .85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all .2s;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--blue-accent);
+      color: var(--blue-accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--blue-pale);
+    }
+
+    .btn-solid {
+      background: var(--blue-accent);
+      color: #fff;
+    }
+
+    .btn-solid:hover {
+      background: var(--blue-mid);
+    }
+
+    .btn-danger {
+      background: transparent;
+      border: 2px solid var(--danger);
+      color: var(--danger);
+    }
+
+    .btn-danger:hover {
+      background: #fff0f0;
+    }
+
+    /* empty state */
+    .empty {
+      text-align: center;
+      padding: 5rem 2rem;
+      color: var(--gray-text);
+    }
+
+    .empty-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+
+    .empty h3 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--blue-deep);
+      margin-bottom: .5rem;
+    }
+
+    /* section heading */
+    .section-label {
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+      color: var(--gray-text);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+      padding: 0 2rem;
+    }
+
+
+    div#Login {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  background: transparent;
+}
+
+#user-icon {
+  font-size: 40px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.dropdown-box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 20px;
+  padding: 10px 40px;
+  white-space: wrap;
+  z-index: 100;
+  border: 2px solid rgb(105, 158, 223);
+  border-radius: 0px 15px 15px 15px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgb(105, 158, 223);
+}
+
+.dropdown-box button{
+  width: 100%;
+}
+
+div#Login:hover .dropdown-box {
+  display: block;
+}
+
+div#Login i {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+
+button#logoutBtn{
+  border: 1px solid gray;
+  color: black;
+  border-radius: 20px;
+  width: calc(100% / 3);
+  /* background-color: aliceblue; */
+  padding: 10px;
+  margin-left: 3%;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+}
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">رحال</div>
+    <ul class="nav-links">
+      <li><a href="../home/index.html">الرئيسية</a></li>
+      <li><a href="../hotels/index.html">فنادق</a></li>
+      <li><a href="../cars/arabic cars/">سيارات</a></li>
+      <li><a href="#" class="active">حجوزاتي</a></li>
+    </ul>
+    <div class="nav-user" id="Login">
+      <a href="../registration/login/travel_login_html.html"><i class="fa-regular fa-circle-user" id="user-icon"></i></a>
+      <div class="dropdown-box">
+              <p id="displayGmail">Loading...</p>
+              <button id="logoutBtn">Logout</button>
+            </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>✈️ حجوزاتي</h1>
+    <p>كل حجوزاتك في مكان واحد — رحلات، فنادق، وسيارات</p>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-num" id="totalBookings">0</div>
+      <div class="stat-lbl">إجمالي الحجوزات</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-num" id="confirmedBookings">0</div>
+      <div class="stat-lbl">مؤكدة</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-num" id="completedBookings">0</div>
+      <div class="stat-lbl">مكتملة</div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-num" id="pendingBookings">0</div>
+      <div class="stat-lbl">قيد الانتظار</div>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filter('all',this)">
+      الكل <span class="count" id="allCount">0</span>
+    </button>
+
+    <button class="filter-btn" onclick="filter('flight',this)">
+      ✈️ رحلات <span class="count" id="flightCount">0</span>
+    </button>
+
+    <button class="filter-btn" onclick="filter('hotel',this)">
+      🏨 فنادق <span class="count" id="hotelCount">0</span>
+    </button>
+
+    <button class="filter-btn" onclick="filter('car',this)">
+      🚗 سيارات <span class="count" id="carCount">0</span>
+    </button>
+  </div>
+
+  <!-- GRID -->
+  <div class="bookings-grid" id="grid">
+
+
+
+  </div><!-- /grid -->
+
+  <script>
+    function filter(type, btn) {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      document.querySelectorAll('.card').forEach(card => {
+        if (type === 'all' || card.dataset.type === type) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+    async function loadMyBookings() {
+
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        window.location.href = "../registration/login/travel_login_html.html";
+        return;
+      }
+
+      try {
+        const res = await fetch("https://final-pro-lgyf.onrender.com/api/my-bookings", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+
+        const data = await res.json();
+
+        const grid = document.getElementById("grid");
+        grid.innerHTML = "";
+
+        /* =====================
+           HOTEL BOOKINGS
+        ======================*/
+        data.hotelBookings.forEach(hotel => {
+
+          grid.innerHTML += `
+        <div class="card" data-type="hotel">
+          <div class="card-header">
+            <div class="card-icon icon-hotel">🏨</div>
+            <div>
+              <div class="card-type">فندق</div>
+              <div class="card-title">${hotel.hotelName}</div>
+            </div>
+            <span class="badge badge-${hotel.status}">
+              ${hotel.status}
+            </span>
+          </div>
+
+          <div class="card-body">
+            <div class="info-row">
+              <div class="info-block">
+                <div class="info-label">تاريخ الوصول</div>
+                <div class="info-value">
+                  ${new Date(hotel.checkInDate).toLocaleDateString()}
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-label">تاريخ المغادرة</div>
+                <div class="info-value">
+                  ${new Date(hotel.checkOutDate).toLocaleDateString()}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+        });
+
+
+        /* =====================
+           CAR BOOKINGS
+        ======================*/
+        data.carBookings.forEach(car => {
+
+          grid.innerHTML += `
+        <div class="card" data-type="car">
+          <div class="card-header">
+            <div class="card-icon icon-car">🚗</div>
+            <div>
+              <div class="card-type">سيارة</div>
+              <div class="card-title">${car.carName}</div>
+            </div>
+            <span class="badge badge-${car.status}">
+              ${car.status}
+            </span>
+          </div>
+
+          <div class="card-body">
+
+            <div class="info-row">
+              <div class="info-block">
+                <div class="info-label">تاريخ الاستلام</div>
+                <div class="info-value">
+                  ${new Date(car.pickupDateTime).toLocaleDateString()}
+                </div>
+              </div>
+
+              <div class="info-block">
+                <div class="info-label">تاريخ التسليم</div>
+                <div class="info-value">
+                  ${new Date(car.dropoffDateTime).toLocaleDateString()}
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      `;
+
+        });
+        /* =====================
+  FLIGHT BOOKINGS
+=====================*/
+        data.flightBookings.forEach(flight => {
+
+          grid.innerHTML += `
+    <div class="card" data-type="flight">
+      <div class="card-header">
+        <div class="card-icon icon-flight">✈️</div>
+        <div>
+          <div class="card-type">رحلة</div>
+          <div class="card-title">
+            ${flight.fromCity} → ${flight.toCity}
+          </div>
+        </div>
+        <span class="badge badge-${flight.status}">
+          ${flight.status}
+        </span>
+      </div>
+
+      <div class="card-body">
+
+        <div class="route-line">
+          <div class="route-city">${flight.fromCity}</div>
+          <div class="route-arrow">
+            <div class="route-dash"></div>
+            <div class="plane-icon">✈</div>
+            <div class="route-dash"></div>
+          </div>
+          <div class="route-city">${flight.toCity}</div>
+        </div>
+
+        <div class="info-row">
+          <div class="info-block">
+            <div class="info-label">تاريخ الذهاب</div>
+            <div class="info-value">
+              ${new Date(flight.departureDate).toLocaleDateString()}
+            </div>
+          </div>
+
+          ${flight.returnDate ? `
+            <div class="info-block">
+              <div class="info-label">تاريخ العودة</div>
+              <div class="info-value">
+                ${new Date(flight.returnDate).toLocaleDateString()}
+              </div>
+            </div>
+            ` : ""
+            }
+        </div>
+
+      </div>
+    </div>
+  `;
+        });
+        const allBookings = [
+          ...data.carBookings,
+          ...data.hotelBookings,
+          ...data.flightBookings
+        ];
+
+        // ===== COUNTS =====
+        const total = allBookings.length;
+
+        const confirmed = allBookings.filter(b => b.status === "confirmed").length;
+        const completed = allBookings.filter(b => b.status === "completed").length;
+        const pending = allBookings.filter(b => b.status === "pending").length;
+
+        const hotelCount = data.hotelBookings.length;
+        const carCount = data.carBookings.length;
+        const flightCount = data.flightBookings.length;
+        // لحد ما تضيف flights
+
+        // ===== UPDATE UI =====
+        document.getElementById("totalBookings").textContent = total;
+        document.getElementById("confirmedBookings").textContent = confirmed;
+        document.getElementById("completedBookings").textContent = completed;
+        document.getElementById("pendingBookings").textContent = pending;
+
+        document.getElementById("allCount").textContent = total;
+        document.getElementById("hotelCount").textContent = hotelCount;
+        document.getElementById("carCount").textContent = carCount;
+        document.getElementById("flightCount").textContent = flightCount;
+
+
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+  const savedGmail = localStorage.getItem("userGmail");
+  const gmailElement = document.getElementById("displayGmail");
+  gmailElement.style.color = "white";
+
+  if (savedGmail) {
+    gmailElement.textContent = savedGmail;
+  } else {
+    gmailElement.textContent = "Sign in first";
+  }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  localStorage.clear();
+  sessionStorage.clear();
+
+  window.location.href = "../registration/login/travel_login_html.html";
+});
+
+
+    loadMyBookings();
+  </script>
+</body>
+
+</html>

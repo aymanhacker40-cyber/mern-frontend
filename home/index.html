@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahal</title>
+    <link rel="stylesheet" href="/frontend/home/main.css" />
+    <!-- icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <!-- * S-NAV -->
+    <nav>
+      <a href="../admin/admin.html" id="adminLink">Admin Dashboard</a>
+      <ul>
+          <div class="paste-button">
+            <button class="menu"><i class="fa-solid fa-bars"></i></button>
+            <div class="dropdown-content">
+              <a id="top" href="../hotels/index.html">حجز الفنادق</a>
+              <a id="middle" href="../cars/arabic cars/arabic.html">تأجير السيارات</a>
+              <a id="bottom" href="../destination/tourism-destinations.html">الوجهات</a>
+              <a id="bottom" href="../booking/booking.html">حجوزاتي</a>
+            </div>
+          </div>
+          <li class="logo">Rahal</li>
+          <div id="Login">
+            <a href="../registration/login/travel_login_html.html"><i class="fa-regular fa-circle-user" id="user-icon"></i></a>
+            <div class="dropdown-box">
+              <p id="displayGmail">Loading...</p>
+              <button id="logoutBtn">Logout</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+    <!-- <hr /> -->
+    <!-- ! E-NAV -->
+    <!-- * S-Main -->
+    <main>
+      <div class="Title">
+        <h1> Rahal <span class="right"> معك </span> <span>لحجز</span>  رحلاتك</h1>
+        <!-- <p>اختر من بين 450 خطوط طيران حول العالم</p> -->
+      </div>
+
+      <div id="search">
+        <div class="row_one">
+          <div>
+            <button id="btn-oneway">ذهاب</button>
+            <button id="btn-roundtrip">ذهاب و عوده</button>
+            <button  class="btn-soon">وجهات متعدده <span class="soon-badge">Soon</span></button>
+          </div>
+          <div class="part_2">
+          </div>
+        </div>
+
+        <!-- * S-Search Form -->
+        <div class="row_Two">
+          <div class="search-field">
+            <label for="from-city"><i class="fa-solid fa-plane-departure"></i> من</label>
+            <input type="text" id="from-city" placeholder="مثال: القاهرة" />
+          </div>
+
+          <div class="search-field">
+            <label for="to-city"><i class="fa-solid fa-plane-arrival"></i> إلى</label>
+            <input type="text" id="to-city" placeholder="مثال: دبي" />
+          </div>
+
+          <div class="search-field">
+            <label for="depart-date"><i class="fa-regular fa-calendar"></i> تاريخ الذهاب</label>
+            <input type="date" id="depart-date" />
+          </div>
+
+          <div class="search-field" id="return-date-wrap">
+            <label for="return-date"><i class="fa-regular fa-calendar-check"></i> تاريخ العودة</label>
+            <input type="date" id="return-date" />
+          </div>
+
+          <div class="luggage-field">
+            <input type="checkbox" id="has-luggage" />
+            <label for="has-luggage"><i class="fa-solid fa-suitcase-rolling"></i> أمتعة سفر</label>
+          </div>
+
+          <div class="searchButton" id="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <p>بحث</p>
+          </div>
+        </div>
+        <!-- ! E-Search Form -->
+      </div>
+    </main>
+    <!-- <hr /> -->
+    <!-- ! E-Main -->
+
+    <!-- * S-Results -->
+    <section id="results-section">
+      <h2 id="results-title">نتائج الرحلات</h2>
+      <div id="flights-grid"></div>
+      <div id="no-results">
+        <i class="fa-solid fa-plane-circle-xmark"></i>
+        <p>لا توجد رحلات متاحة تطابق بحثك</p>
+      </div>
+    </section>
+    <!-- ! E-Results -->
+
+    <!-- * S-Meza -->
+    <section class="meza">
+      <div>
+        <img src="./img-20260223T084748Z-1-001/img/transportation_6554341.png" alt="">
+        <p>النقل من المطار</p>
+      </div>
+      <div>
+        <img src="./img-20260223T084748Z-1-001/img/booking_9835801.png" alt="">
+        <a href="../cars/english cars/english.html"><p>خدمه تأجير السيارات</p></a>
+      </div>
+      <div>
+        <img src="./img-20260223T084748Z-1-001/img/hotel.png" alt="">
+        <p>حجز الفنادق</p>
+      </div>
+      <div>
+        <img src="./img-20260223T084748Z-1-001/img/book.png" alt="">
+        <p>حجز رحلات الطيران</p>
+      </div>
+      <div>
+        <img src="./img-20260223T084748Z-1-001/img/more.png" alt="">
+        <p>المزيد</p>
+      </div>
+    </section>
+    <!-- ! E-Meza -->
+    <!-- * S-Slider -->
+    <div class="main_slider">
+        <div id="next" class="btn"><i class="fa-solid fa-angles-right"></i></div>
+        <div class="slider">
+          <img src="./img-20260223T084748Z-1-001/img/building-with-domes-turrets.jpg" />
+          <img src="./img-20260223T084748Z-1-001/img/skyscrapers-palm-trees-dubai-uae.jpg" />
+          <img src="./img-20260223T084748Z-1-001/img/young-man-walking-towards-great-sphinx-giza.jpg" />
+          <img src="./img-20260223T084748Z-1-001/img/shanghai-aerial-sunset.jpg" />
+          <img src="./img-20260223T084748Z-1-001/img/statue-liberty-new-york-city-skyline-usa.jpg" />
+        </div>
+        <div id="prev" class="btn"><i class="fa-solid fa-angles-left"></i></div>
+    </div>
+<div class="line">
+      <hr/>
+    </div>
+    <!-- ! E-Slider -->
+    <!-- * S-download -->
+    <section class="download">
+      <div class="des">
+        <h1>حمّل تطبيق رحال!</h1>
+        <p>
+          تطبيقنا يلبي كل احتياجاتك للسفر، من رحلات الطيران والفنادق إلى الأنشطة
+          وأكثر. مع خيارات دفع آمنة ومرنة وتجربة استخدام سهلة وسلسة، المسافر هو
+          رفيقك بالسفر المثالي
+        </p>
+      </div>
+
+      <div class="Appstore">
+        <h3>متوفر حاليا</h3>
+        <a href="#" class="playstore-button">
+          <span class="icon">
+            <svg
+              fill="currentcolor"
+              viewBox="-52.01 0 560.035 560.035"
+              xmlns="http://www.w3.org/2000/svg"
+              stroke="#ffffff"
+            >
+              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+              <g
+                id="SVGRepo_tracerCarrier"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></g>
+              <g id="SVGRepo_iconCarrier">
+                <path
+                  d="M380.844 297.529c.787 84.752 74.349 112.955 75.164 113.314-.622 1.988-11.754 40.191-38.756 79.652-23.343 34.117-47.568 68.107-85.731 68.811-37.499.691-49.557-22.236-92.429-22.236-42.859 0-56.256 21.533-91.753 22.928-36.837 1.395-64.889-36.891-88.424-70.883-48.093-69.53-84.846-196.475-35.496-282.165 24.516-42.554 68.328-69.501 115.882-70.192 36.173-.69 70.315 24.336 92.429 24.336 22.1 0 63.59-30.096 107.208-25.676 18.26.76 69.517 7.376 102.429 55.552-2.652 1.644-61.159 35.704-60.523 106.559M310.369 89.418C329.926 65.745 343.089 32.79 339.498 0 311.308 1.133 277.22 18.785 257 42.445c-18.121 20.952-33.991 54.487-29.709 86.628 31.421 2.431 63.52-15.967 83.078-39.655"
+                ></path>
+              </g>
+            </svg>
+          </span>
+          <span class="texts">
+            <span class="text-1">Download form</span>
+            <span class="text-2">App store</span>
+          </span>
+        </a>
+      </div>
+    </section>
+    <div class="line">
+      <hr/>
+    </div>
+    <!-- ! E-download -->
+    <!-- * S-footer -->
+    <footer>
+      <div class="footer_logo"><p class="logo">Rahal</p></div>
+      <div class="Legal">
+        <h3>الشروط والاحكام</h3>
+          <a href="../about/about.html">من نحن</a>
+        <a href="">وظائف</a>
+      </div>
+      <div class="Support">
+        <h3>الدعم</h3>
+        <a href="../contact us/tourism-contact-page.html">اتصل بنا</a>
+        <!-- <a href="">اسئله شائعه</a> -->
+      </div>
+      <div class="SocialMedia">
+        <h3>مواقع التواصل</h3>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/facebook.png" alt="" />
+          <a href="https://www.facebook.com/profile.php?id=61583307142506">فيسبوك</a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/tik-tok.png" alt="" />
+          <a href="https://www.tiktok.com/@portsaid42?lang=en">تيك توك</a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/linkedin.png" alt="" />
+          <a href="https://www.linkedin.com/in/rahal-tour-2224673b1/?isSelfProfile=true">لينكد إن</a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/instagram.png" alt="" />
+          <a href="https://www.instagram.com/toursrahal/">إنستجرام</a>
+        </div>
+      </div>
+      <div class="Countries">
+        <h3>الدول</h3>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/mycollection/png/001-flag.png" alt="" />
+          <a href="">السعوديه</a>
+        </div>
+        <div>
+          <img
+            src="./img-20260223T084748Z-1-001/img/mycollection/png/002-united-arab-emirates.png"
+            alt=""
+          />
+          <a href="">الامارات<a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/mycollection/png/004-flag-1.png" alt=""/>
+          <a href="">عمان</a> 
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/mycollection/png/003-qatar.png" alt="" />
+          <a href="">قطر</a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/mycollection/png/005-turkey.png" alt="" />
+          <a href="">تركيا</a>
+        </div>
+        <div>
+          <img src="./img-20260223T084748Z-1-001/img/mycollection/png/007-kuwait.png" alt="" />
+          <a href="">الكويت</a>
+        </div>
+      </div>
+    </footer>
+    <!-- ! E-footer -->
+    <script src="/frontend/home/main.js"></script>
+  </body>
+</html>

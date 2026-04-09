@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rahal - Login</title>
+    <link rel="stylesheet" href="travel_login_css.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1>WELCOME<br />BACK</h1>
+          <p>
+            Discover amazing destinations around the world. Your next adventure
+            awaits. Login to access exclusive travel deals, personalized
+            recommendations, and your saved destinations.
+          </p>
+          <a href="/frontend/destination/tourism-destinations.html" class="explore-btn">Explore Destinations</a>
+        </div>
+      </div>
+
+      <div class="login-section">
+        <div class="logo">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M21 16V8C21 6.89543 20.1046 6 19 6H5C3.89543 6 3 6.89543 3 8V16C3 17.1046 3.89543 18 5 18H19C20.1046 18 21 17.1046 21 16Z"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M3 10L12 15L21 10"
+              stroke="white"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          <span>Rahal</span>
+        </div>
+
+        <h2>Login</h2>
+        <p class="subtitle">
+          Don't have an account? <a href="/registration/sign up/travel_signup_html.html" id="signupLink">Sign up</a>
+        </p>
+
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="email">Email Address*</label>
+            <input
+              type="email"
+              id="email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password*</label>
+            <input
+              type="password"
+              id="password"
+              required
+            />
+          </div>
+
+          <div class="form-footer">
+            <a href="travel_forgot_password.html" class="forgot-password" id="forgotPassword" 
+              >Forgot password?</a
+            >
+          </div>
+          
+          <div id="loginMessage" class="login-message"></div>
+
+
+          <button type="submit" class="login-btn">Login</button>
+
+          
+
+
+        </form>
+      </div>
+    </div>
+
+    <script src="travel_login_js.js"></script>
+  </body>
+</html>

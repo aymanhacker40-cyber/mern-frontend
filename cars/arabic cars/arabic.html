@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>تأجير السيارات - رحال</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playwrite+NO:wght@100..400&display=swap" rel="stylesheet">
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="arabic.css" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- الترويسة -->
+    <!-- <header class="header">
+      <div class="header-top">
+        <div class="header-top-content">
+          <div class="lang-switcher">
+            <button class="lang-btn active">العربية</button>
+            <button
+              class="lang-btn"
+              onclick="window.location.href = '../english cars/english.html'"
+            >
+              English
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="header-main">
+        <div class="logo">رحال</div>
+        <ul class="nav-menu">
+          <li><a href="/home/index.html">الصفحة الرئيسية</a></li>
+          <li><a href="/hotels/index.html">الفنادق</a></li>
+          <li><a href="/cars/arabic cars/arabic.html">تأجير السيارات</a></li>
+
+        </ul>
+        <button class="login-btn" id="authBtn">تسجيل الدخول</button>
+      </div>
+    </header> -->
+
+            <nav>
+      
+      <ul>
+          <div class="paste-button">
+          <div class="lang-switcher">
+            <button class="lang-btn active">العربيه</button>
+            <button
+              class="lang-btn "
+              onclick="window.location.href = '../english cars/english.html'"
+            >
+              English
+            </button>
+          </div>
+          </div>
+          <li class="logo">Rahal</li>
+          <div id="Login">
+            <a href="../../registration/login/travel_login_html.html"><i class="fa-regular fa-circle-user" id="user-icon"></i></a>
+            <div class="dropdown-box">
+              <p id="displayGmail">Loading...</p>
+              <!-- <br> -->
+              <button id="logoutBtn">Logout</button>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+
+    <header class="header">
+      <!-- <div class="header-top">
+        <div class="header-top-content">
+        </div>
+      </div> -->
+      <div class="header-main">
+        <!-- <div class="logo">Rahal</div> -->
+        <ul class="nav-menu">
+          <li><a href="../../home/index.html">الصفحه الرئيسية</a></li>
+          <li><a href="../../hotels/index.html">الفنادق</a></li>
+          <li><a href="../../cars/english cars/english.html">تاجير السيارات</a></li>
+        </ul>
+        <!-- <button class="login-btn" id="authBtn">login</button> -->
+      </div>
+    </header>
+    
+
+    <!-- لافتة البطل -->
+    <section class="hero-banner">
+      <h1>احجز سيارتك بأفضل الأسعار</h1>
+      <p>استمتع بتجربة تأجير سيارات سهلة ومريحة</p>
+    </section>
+
+    <div class="search-section">
+      <div class="search-card">
+        <div class="search-tabs">
+          <button class="tab-btn active" data-tab="car">استئجار سيارة</button>
+        </div>
+
+        <form id="bookingForm">
+          <div class="search-grid">
+            <div class="input-group">
+              <label>موقع الاستلام</label>
+              <input type="text" value="الرياض، المملكة العربية السعودية" id="pickupLocation"/>
+            </div>
+
+            <div class="input-group">
+              <label>تاريخ الاستلام</label>
+              <input type="date" id="pickupDate" />
+            </div>
+
+            <div class="input-group">
+              <label>وقت الاستلام</label>
+              <input type="time" id="pickupTime" />
+            </div>
+
+            <div class="input-group">
+              <label>موقع التسليم</label>
+              <input type="text" placeholder="نفس موقع الاستلام" id="dropoffLocation"/>
+            </div>
+
+            <div class="input-group">
+              <label>تاريخ التسليم</label>
+              <input type="date" id="dropoffDate" />
+            </div>
+
+            <div class="input-group">
+              <label>وقت التسليم</label>
+              <input type="time" id="dropoffTime" />
+            </div>
+            <div class="input-group">
+              <label>
+                <input type="checkbox" id="privateDriver" />
+                سائق خاص
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="book-now-btn">احجز الآن</button>
+          <p id="totalPrice" class="total-price"></p>
+
+          <p id="formError" class="form-error"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="container">
+      <h2 class="section-title">السيارات المتاحة</h2>
+
+      <div class="cars-filter">
+        <input
+          type="text"
+          id="carSearch"
+          placeholder="ابحث عن طريق ماركة السيارة..."
+          autocomplete="off"
+        />
+        <ul id="suggestions" class="suggestions-list"></ul>
+      </div>
+
+      <div class="cars-grid" id="carsGrid"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+  <div class="container footer-row">
+    <div class="footer-col">
+      <h4>الشركة</h4>
+      <ul>
+        <li><a href="../../about/about.html">من نحن</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>المساعدة</h4>
+      <ul>
+        <li><a href="../../contact us/tourism-contact-page.html">تواصل معنا</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>الخدمات</h4>
+      <ul>
+        <li><a href="../../hotels/index.html">الفنادق</a></li>
+        <li><a href="../../cars/arabic cars/arabic.html">السيارات</a></li>
+        <li><a href="../../home/index.html">الطيران</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>تابعنا</h4>
+      <div class="social-links">
+        <a href="https://www.facebook.com/profile.php?id=61583307142506"><img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" /></a>
+        <a href="https://www.instagram.com/toursrahal/"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" /></a>
+        <a href="https://www.linkedin.com/in/rahal-tour-2224673b1/?isSelfProfile=true"><img src="https://cdn-icons-png.flaticon.com/128/145/145807.png" alt="linkedin" /></a>
+        <a href="https://www.tiktok.com/@portsaid42?lang=en"><img src="https://cdn-icons-png.flaticon.com/128/3116/3116491.png" alt="tiktok" /></a>
+      </div>
+    </div>
+  </div>
+  <div id="footer-copy">© 2026 رحال</div>
+</footer>
+
+           
+
+    <script src="arabic.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore World Destinations</title>
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        />
+    <link rel="stylesheet" href="des.css">
+</head>
+<body>
+    <!-- paste-button -->
+    <div id="homePage">
+        <div class="hero">
+            <div class="paste-button">
+                <h1>Discover Amazing Destinations </h1>
+                <button class="menu"><i class="fa-solid fa-bars"></i></button>
+                <div class="dropdown-content">
+                    <a id="bottom" href="../home/index.html">الرئيسيه</a>
+                    <a id="middle" href="../cars/arabic cars/arabic.html">تأجير السيارات</a>
+                    <a id="top" href="../hotels/index.html">حجز الفنادق</a>
+                </div>
+            </div>
+            <p>Explore the world's most beautiful places and create unforgettable memories</p>
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search destinations..." onkeyup="filterDestinations()">
+                <button>Search</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="destinations-grid" id="destinationsGrid"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="pageContent" class="page-content"></div>
+    </div>
+
+    <script src="des.js"></script>
+</body>
+</html>
