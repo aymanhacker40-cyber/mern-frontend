@@ -8,14 +8,51 @@ function showMessage(text, type = "error") {
   messageBox.style.display = "block";
 }
 
+// ⏱️ fetch مع timeout
+function fetchWithTimeout(url, options, timeout = 10000) {
+  return Promise.race([
+    fetch(url, options),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("Server timeout, try again")), timeout)
+    )
+  ]);
+}
+
+// 📡 request login
 async function loginRequest(email, password) {
-  return await fetch("https://final-pro-lgyf.onrender.com/api/auth/login", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
+  return await fetchWithTimeout(
+    "https://final-pro-lgyf.onrender.com/api/auth/login",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
     },
-    body: JSON.stringify({ email, password }),
-  });
+    10000
+  );
+}
+
+// 🔁 retry + delay
+async function loginWithRetry(email, password) {
+  let res;
+
+  try {
+    res = await loginRequest(email, password);
+
+    // لو السيرفر لسه صاحي
+    if (!res.ok) {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      res = await loginRequest(email, password);
+    }
+
+    return res;
+
+  } catch (err) {
+    // لو حصل timeout أو network error
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    return await loginRequest(email, password);
+  }
 }
 
 form.addEventListener("submit", async (e) => {
@@ -36,20 +73,12 @@ form.addEventListener("submit", async (e) => {
   submitBtn.textContent = "Logging in...";
 
   try {
-    let res = await loginRequest(email, password);
-
-    // 🔁 Retry مرة كمان لو السيرفر لسه صاحي (Render cold start)
-    if (!res.ok) {
-      res = await loginRequest(email, password);
-    }
-
+    const res = await loginWithRetry(email, password);
     const data = await res.json();
 
-    // ❌ لو فيه error
+    // ❌ error من السيرفر
     if (!res.ok) {
       showMessage(data.message || "Invalid email or password");
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Login";
       return;
     }
 
@@ -65,11 +94,11 @@ form.addEventListener("submit", async (e) => {
     }, 800);
 
   } catch (error) {
-    console.error(error);
-    showMessage("Server error, please try again later");
+    console.error("LOGIN ERROR:", error);
+    showMessage(error.message || "Server error, please try again later");
   }
 
-  // 🔓 رجع الزرار تاني
+  // 🔓 رجع الزرار
   submitBtn.disabled = false;
   submitBtn.textContent = "Login";
 });
