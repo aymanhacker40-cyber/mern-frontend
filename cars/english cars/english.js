@@ -1,10 +1,11 @@
-  document.getElementById("logoutBtn").addEventListener("click", async () => {
-  localStorage.clear(); 
+/* ===============================
+   Logout
+================================ */
+document.getElementById("logoutBtn")?.addEventListener("click", () => {
+  localStorage.clear();
   sessionStorage.clear();
-
   window.location.href = "../../registration/login/travel_login_html.html";
 });
-// -----------------
 
 
 /* ===============================
@@ -15,59 +16,81 @@ const dropoffLocation = document.getElementById("dropoffLocation");
 
 let selectedCarId = null;
 let selectedCarName = null;
-let selectedCarDisplayPrice = null; // UI only
+let selectedCarDisplayPrice = null;
 let allCars = [];
 
 const formMessage = document.getElementById("formError");
 
 function showMessage(text, type = "error") {
+  if (!formMessage) return;
   formMessage.textContent = text;
   formMessage.className = `form-error ${type}`;
   formMessage.style.display = "block";
 }
 
-/* ===============================
-   Tab Switching
-================================ */
-document.querySelectorAll(".tab-btn").forEach((btn) => {
-  btn.addEventListener("click", function () {
-    document
-      .querySelectorAll(".tab-btn")
-      .forEach((b) => b.classList.remove("active"));
-    this.classList.add("active");
-  });
-});
 
 /* ===============================
-   Smooth Scroll
+   Loading state (FIX)
 ================================ */
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-  anchor.addEventListener("click", function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute("href"));
-    if (target) target.scrollIntoView({ behavior: "smooth" });
-  });
-});
+function showLoading() {
+  const carsGrid = document.getElementById("carsGrid");
+  if (carsGrid) {
+    carsGrid.innerHTML = "<p>Loading cars...</p>";
+  }
+}
+
 
 /* ===============================
-   Load Cars FROM API ✅
+   Retry Fetch (IMPORTANT FIX)
 ================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  fetch("https://final-pro-lgyf.onrender.com/api/cars?lang=en")
-    .then((res) => res.json())
-    .then((cars) => {
-      allCars = cars;
-      renderCars(allCars);
-    })
-    .catch((err) => console.error("Error loading cars:", err));
+async function fetchCars(retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await fetch("https://final-pro-lgyf.onrender.com/api/cars?lang=en");
+
+      if (res.ok) return await res.json();
+
+    } catch (err) {
+      console.log("retry:", i + 1);
+    }
+
+    await new Promise(r => setTimeout(r, 1500));
+  }
+
+  throw new Error("Failed to load cars");
+}
+
+
+/* ===============================
+   Load Cars
+================================ */
+document.addEventListener("DOMContentLoaded", async () => {
+  showLoading();
+
+  try {
+    const cars = await fetchCars(3);
+    allCars = cars || [];
+    renderCars(allCars);
+  } catch (err) {
+    console.error(err);
+    showMessage("Failed to load cars. Please refresh.");
+  }
 });
+
 
 /* ===============================
    Render Cars
 ================================ */
 function renderCars(cars) {
   const carsGrid = document.getElementById("carsGrid");
+  if (!carsGrid) return;
+
   carsGrid.innerHTML = "";
+
+  if (!cars || cars.length === 0) {
+    carsGrid.innerHTML = "<p>No cars available</p>";
+    return;
+  }
 
   cars.forEach((car) => {
     const carCard = document.createElement("div");
@@ -116,17 +139,19 @@ function renderCars(cars) {
 }
 
 
+/* ===============================
+   Gmail display
+================================ */
 document.addEventListener("DOMContentLoaded", () => {
   const savedGmail = localStorage.getItem("userGmail");
   const gmailElement = document.getElementById("displayGmail");
-  gmailElement.style.color = "white";
 
-  if (savedGmail) {
-    gmailElement.textContent = savedGmail;
-  } else {
-    gmailElement.textContent = "Sign in first";
+  if (gmailElement) {
+    gmailElement.style.color = "white";
+    gmailElement.textContent = savedGmail || "Sign in first";
   }
 });
+
 
 /* ===============================
    Search
@@ -134,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
 const searchInput = document.getElementById("carSearch");
 const suggestions = document.getElementById("suggestions");
 
-searchInput.addEventListener("input", () => {
+searchInput?.addEventListener("input", () => {
   const value = searchInput.value.toLowerCase();
   suggestions.innerHTML = "";
 
@@ -148,7 +173,7 @@ searchInput.addEventListener("input", () => {
     ...new Set(
       allCars
         .map((car) => car.brand)
-        .filter((b) => b?.toLowerCase().startsWith(value)),
+        .filter((b) => b?.toLowerCase().startsWith(value))
     ),
   ];
 
@@ -159,10 +184,11 @@ searchInput.addEventListener("input", () => {
     li.addEventListener("click", () => {
       searchInput.value = brand;
       suggestions.style.display = "none";
+
       renderCars(
         allCars.filter(
-          (car) => car.brand.toLowerCase() === brand.toLowerCase(),
-        ),
+          (car) => car.brand.toLowerCase() === brand.toLowerCase()
+        )
       );
     });
 
@@ -172,12 +198,12 @@ searchInput.addEventListener("input", () => {
   suggestions.style.display = brands.length ? "block" : "none";
 });
 
+
 /* ===============================
-   Price Preview (UI ONLY)
+   Price Preview
 ================================ */
 function calculateDays(start, end) {
-  const diff = new Date(end) - new Date(start);
-  return Math.ceil(diff / (1000 * 60 * 60 * 24));
+  return Math.ceil((new Date(end) - new Date(start)) / (1000 * 60 * 60 * 24));
 }
 
 const pickupDate = document.getElementById("pickupDate");
@@ -189,13 +215,13 @@ const totalPriceEl = document.getElementById("totalPrice");
 
 function updatePricePreview() {
   if (
-    !pickupDate.value ||
-    !pickupTime.value ||
-    !dropoffDate.value ||
-    !dropoffTime.value ||
+    !pickupDate?.value ||
+    !pickupTime?.value ||
+    !dropoffDate?.value ||
+    !dropoffTime?.value ||
     !selectedCarDisplayPrice
   ) {
-    totalPriceEl.innerText = "";
+    if (totalPriceEl) totalPriceEl.innerText = "";
     return;
   }
 
@@ -203,28 +229,24 @@ function updatePricePreview() {
   const dropoff = `${dropoffDate.value}T${dropoffTime.value}`;
 
   const days = calculateDays(pickup, dropoff);
+
   if (days <= 0) return;
 
   let total = days * selectedCarDisplayPrice;
-  if (privateDriverCheckbox.checked) total += days * 100;
+  if (privateDriverCheckbox?.checked) total += days * 100;
 
-  totalPriceEl.innerText = `Estimated Price: ${total} USD`;
+  if (totalPriceEl) {
+    totalPriceEl.innerText = `Estimated Price: ${total} USD`;
+  }
 }
 
-[
-  pickupDate,
-  pickupTime,
-  dropoffDate,
-  dropoffTime,
-  privateDriverCheckbox,
-].forEach((el) => el.addEventListener("change", updatePricePreview));
 
 /* ===============================
-   Booking Submit ✅
+   Booking Submit
 ================================ */
 const form = document.getElementById("bookingForm");
 
-form.addEventListener("submit", async (e) => {
+form?.addEventListener("submit", async (e) => {
   e.preventDefault();
 
   if (!selectedCarId) {
@@ -232,7 +254,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  if (!pickupLocation.value || !dropoffLocation.value) {
+  if (!pickupLocation?.value || !dropoffLocation?.value) {
     showMessage("Please enter pickup and dropoff locations");
     return;
   }
@@ -252,22 +274,18 @@ form.addEventListener("submit", async (e) => {
       },
       body: JSON.stringify({
         carId: selectedCarId,
-
-        pickupDateTime: `${pickupDate.value}T${pickupTime.value}`,
-        dropoffDateTime: `${dropoffDate.value}T${dropoffTime.value}`,
-
         pickupLocation: pickupLocation.value,
         dropoffLocation: dropoffLocation.value,
-
-        privateDriver: privateDriverCheckbox.checked,
         lang: "en",
       }),
     });
 
     const data = await res.json();
+
     if (!res.ok) throw new Error(data.message);
 
-    showMessage("✅ Booking confirmed successfully!", "success");
+    showMessage("Booking confirmed successfully!", "success");
+
   } catch (err) {
     showMessage(err.message || "Server error");
   }
@@ -280,15 +298,17 @@ form.addEventListener("submit", async (e) => {
 const authBtn = document.getElementById("authBtn");
 const token = localStorage.getItem("token");
 
-if (token) {
-  authBtn.textContent = "Logout";
-  authBtn.onclick = () => {
-    localStorage.clear();
-    location.reload();
-  };
-} else {
-  authBtn.textContent = "Login";
-  authBtn.onclick = () => {
-    window.location.href = "../../registration/login/travel_login_html.html";
-  };
+if (authBtn) {
+  if (token) {
+    authBtn.textContent = "Logout";
+    authBtn.onclick = () => {
+      localStorage.clear();
+      location.reload();
+    };
+  } else {
+    authBtn.textContent = "Login";
+    authBtn.onclick = () => {
+      window.location.href = "../../registration/login/travel_login_html.html";
+    };
+  }
 }
