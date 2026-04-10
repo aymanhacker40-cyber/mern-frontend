@@ -34,25 +34,23 @@ async function loginRequest(email, password) {
 }
 
 // 🔁 retry + delay
-async function loginWithRetry(email, password) {
-  let res;
+async function loginWithRetry(email, password, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const res = await loginRequest(email, password);
 
-  try {
-    res = await loginRequest(email, password);
+      if (res.ok) return res;
 
-    // لو السيرفر لسه صاحي
-    if (!res.ok) {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      res = await loginRequest(email, password);
+      // لو مش ok استنى وجرب تاني
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+    } catch (err) {
+      // network error
+      await new Promise(resolve => setTimeout(resolve, 1500));
     }
-
-    return res;
-
-  } catch (err) {
-    // لو حصل timeout أو network error
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    return await loginRequest(email, password);
   }
+
+  throw new Error("Server is taking too long, please try again");
 }
 
 form.addEventListener("submit", async (e) => {
