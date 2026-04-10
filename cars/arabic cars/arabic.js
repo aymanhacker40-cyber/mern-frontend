@@ -57,39 +57,15 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
 /* ===============================
    تحميل السيارات من API ✅
 ================================ */
-async function loadCars(retries = 3) {
-  const carsGrid = document.getElementById("carsGrid");
-
-  if (carsGrid) {
-    carsGrid.innerHTML = "Loading cars...";
-  }
-
-  for (let i = 0; i < retries; i++) {
-    try {
-      const res = await fetch("https://final-pro-lgyf.onrender.com/api/cars?lang=ar");
-
-      if (!res.ok) throw new Error("Server error");
-
-      const cars = await res.json();
-
-      allCars = cars || [];
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://final-pro-lgyf.onrender.com/api/cars?lang=ar")
+    .then((res) => res.json())
+    .then((cars) => {
+      allCars = cars;
       renderCars(allCars);
-
-      return; // نجح خلاص نخرج
-
-    } catch (err) {
-      console.log(`Retry ${i + 1} failed`);
-
-      // استنى شوية قبل المحاولة اللي بعدها
-      await new Promise((r) => setTimeout(r, 1500));
-    }
-  }
-
-  // لو كل المحاولات فشلت
-  if (carsGrid) {
-    carsGrid.innerHTML = "⚠️ Failed to load cars. Please refresh.";
-  }
-}
+    })
+    .catch((err) => console.error("خطأ في تحميل السيارات:", err));
+});
 
 /* ===============================
    عرض السيارات
@@ -313,6 +289,3 @@ if (token) {
     window.location.href = "../../registration/login/travel_login_html.html";
   };
 }
-document.addEventListener("DOMContentLoaded", () => {
-  loadCars();
-});
