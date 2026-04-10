@@ -15,7 +15,7 @@ document.getElementById("logoutBtn").addEventListener("click", async () => {
   localStorage.clear();
   sessionStorage.clear();
 
-  window.location.href = "/frontend/registration/login/travel_login_html.html";
+  window.location.href = "/registration/login/travel_login_html.html";
 });
 
 
@@ -168,7 +168,7 @@ document.querySelector(".logout-btn").addEventListener("click", () => {
     localStorage.removeItem("user");
 
     // Redirect to login page
-    window.location.href = "/frontend/registration/login/travel_login_html.html";
+    window.location.href = "/registration/login/travel_login_html.html";
   
 });
 
