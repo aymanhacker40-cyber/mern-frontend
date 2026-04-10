@@ -225,3 +225,7 @@ function goToBooking(flight) {
 
   window.location.href = "../rahal-flight-booking.html";
 }
+document.addEventListener("DOMContentLoaded", () => {
+  fetch("https://final-pro-lgyf.onrender.com/")
+    .catch(() => {});
+});
