@@ -52,7 +52,7 @@ form.addEventListener("submit", async (e) => {
     showMessage("Login successful, redirecting...", "success");
 
     setTimeout(() => {
-      window.location.href = window.location.origin + "/frontend/home/index.html";
+      window.location.href = window.location.origin + "../../home/index.html";
     }, 800);
   } catch (error) {
     console.error(error);
