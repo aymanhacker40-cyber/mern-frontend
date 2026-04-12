@@ -8,7 +8,7 @@ const token = localStorage.getItem("token");
 
 if (!token) {
     alert("يجب تسجيل الدخول أولاً");
-    window.location.href = "/login.html";
+    window.location.href = "../../registration/login/travel_login_html.html";
 }
 
 /* =======================
