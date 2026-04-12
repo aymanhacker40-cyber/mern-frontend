@@ -50,7 +50,7 @@ async function loginWithRetry(email, password, retries = 3) {
     }
   }
 
-  throw new Error("Server is taking too long, please try again");
+  throw new Error("either email or password is incorrect, or server is down. Please try again later.");
 }
 
 form.addEventListener("submit", async (e) => {
