@@ -638,3 +638,49 @@ body {
   padding: 24px 16px; /* ← قلل الـ padding الجانبي */
   width: 100%;
 }
+
+@media (max-width: 768px) {
+
+  /* 1. إصلاح layout الأساسي */
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  /* 2. منع الجدول من فرض عرض كبير */
+  .bookings-table {
+    min-width: 0;
+    width: 100%;
+  }
+
+  /* 3. تحويل الجدول لعرض scroll نظيف */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 4. تحسين sidebar */
+  .sidebar {
+    width: 260px;
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* 5. تصغير العناصر */
+  .dashboard-header {
+    padding: 16px;
+  }
+
+  .header-left h1 {
+    font-size: 20px;
+  }
+
+  .stats-quick {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

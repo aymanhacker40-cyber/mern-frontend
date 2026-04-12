@@ -86,11 +86,7 @@ body{
 	padding:0;
 	box-sizing: border-box;
 }
-.container{
-  /* padding: 10px 50px; */
-	/* max-width: 1170px; */
-	/* margin:auto; */
-}
+
 .row{
 	display: flex;
 	flex-wrap: wrap;
@@ -174,3 +170,28 @@ ul{
 
 
 
+@media (max-width: 768px) {
+  header {
+    padding: 10px 15px;
+  }
+
+  div#Login {
+    position: static;
+  }
+
+  .dropdown-box {
+    left: 0;
+    right: 0;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  #user-icon {
+    font-size: 30px;
+  }
+
+  .filter-select,
+  .price-input {
+    width: 100%;
+  }
+}

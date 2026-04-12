@@ -844,3 +844,63 @@ body {
   }
 }
 
+@media (max-width: 768px) {
+
+  /* ===== NAV FIX ===== */
+  nav {
+    height: auto;
+    padding: 10px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  nav ul li {
+    font-size: 16px;
+  }
+
+  /* ===== HEADER FIX ===== */
+  .header-main {
+    width: 100%;
+    border-radius: 10px;
+    padding: 10px;
+  }
+
+  /* ===== SEARCH GRID FIX ===== */
+  .search-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== CARDS FIX ===== */
+  .cars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ===== DROPDOWN FIX ===== */
+  .dropdown-box {
+    position: absolute;
+    right: 0;
+    left: auto;
+    width: 180px;
+    padding: 10px;
+  }
+
+  /* ===== TYPE SECTION ===== */
+  div#type {
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 10px;
+  }
+
+  /* ===== GENERAL SPACING ===== */
+  .container {
+    padding: 20px 10px;
+  }
+
+  .hero-banner h1 {
+    font-size: 24px;
+  }
+}

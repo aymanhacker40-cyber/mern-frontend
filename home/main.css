@@ -994,3 +994,151 @@ div.searchButton {
 /* ! =============================== */
 /* ! -------- Results Section ------ */
 /* ! =============================== */
+
+
+
+/* ====== كودك الأصلي (كما هو بدون أي تغيير) ====== */
+/* (اختصار هنا للعرض — أنت تستخدم نفس الكود اللي أرسلته بالكامل) */
+
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+  body {
+    background-size: cover;
+  }
+
+  nav {
+    padding: 20px;
+    height: auto;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  nav ul li {
+    font-size: 20px;
+  }
+
+  div#type {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  main {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  main div.Title {
+    text-align: center;
+    word-spacing: normal;
+  }
+
+  main div#search {
+    width: 95%;
+    padding: 20px;
+  }
+
+  div.row_one {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  div.row_one > div,
+  div.row_one div.part_2 {
+    width: 100%;
+  }
+
+  button,
+  div.row_one div a {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  div.row_Two {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-field {
+    min-width: 100%;
+  }
+
+  div.searchButton {
+    width: 100%;
+    justify-content: center;
+  }
+
+  section.meza {
+    flex-wrap: wrap;
+    height: auto;
+    gap: 15px;
+  }
+
+  section.meza div {
+    width: 45%;
+    border-left: none;
+  }
+
+  .main_slider {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  div.slider img {
+    width: 100%;
+    height: auto;
+  }
+
+  section.download {
+    flex-direction: column;
+    height: auto;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  section.download div.des,
+  section.download div.phone,
+  div.Appstore {
+    width: 100%;
+    text-align: center;
+  }
+
+  section.download div.phone img {
+    width: 200px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  footer > * {
+    width: 90%;
+    text-align: center;
+  }
+
+  .flight-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .flight-route {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .price-book {
+    width: 100%;
+  }
+
+  .book-now-btn {
+    width: 100% !important;
+  }
+
+}
